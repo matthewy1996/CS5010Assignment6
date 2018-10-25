@@ -2,13 +2,14 @@ package freecell.model;
 
 import java.util.List;
 
+import freecell.util.FreecellPile.PileType;
+
 /**
  * This is the interface of the Freecell model. It is parameterized over the
  * card type, i.e. when you implement it, you can substitute K with your
  * implementation of a card.
  */
 public interface FreecellOperations<K> {
-
 
   /**
    * Return a valid and complete deck of cards for a game of Freecell. There is
@@ -57,7 +58,7 @@ public interface FreecellOperations<K> {
             int cardIndex,
             PileType destination,
             int destPileNumber) throws IllegalArgumentException,
-          IllegalStateException;
+            IllegalStateException;
 
   /**
    * Signal if the game is over or not.
@@ -73,8 +74,7 @@ public interface FreecellOperations<K> {
    * F1:[b]f11,[b]f12,[b],...,[b]f1n1[n] (Cards in foundation pile 1 in order)
    * F2:[b]f21,[b]f22,[b],...,[b]f2n2[n] (Cards in foundation pile 2 in order)
    * ...
-   * Fm:[b]fm1,[b]fm2,[b],...,[b]fmnm[n] (Cards in foundation pile m in
-   * order)
+   * Fm:[b]fm1,[b]fm2,[b],...,[b]fmnm[n] (Cards in foundation pile m inorder)
    * O1:[b]o11[n] (Cards in open pile 1)
    * O2:[b]o21[n] (Cards in open pile 2)
    * ...

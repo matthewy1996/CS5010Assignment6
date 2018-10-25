@@ -1,0 +1,5 @@
+package freecell.model;
+
+public enum GameState {
+  WAITING_INITIALIZATION, WAITING_NEXT_MOVE, GAME_OVER_WIN, GAME_OVER_STALEMATE
+}

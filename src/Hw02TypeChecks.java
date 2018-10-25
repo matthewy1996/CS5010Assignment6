@@ -1,8 +1,7 @@
 import java.util.List;
 
 import freecell.model.FreecellModel;
-import freecell.model.FreecellOperations;
-import freecell.model.PileType;
+import freecell.util.FreecellPile.PileType;
 
 /**
  * Do not modify this file. This file should compile correctly with your code!
