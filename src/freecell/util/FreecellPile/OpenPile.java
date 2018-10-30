@@ -1,5 +1,6 @@
 package freecell.util.FreecellPile;
 
+import freecell.model.PileType;
 import freecell.util.FreecellCard.Card;
 
 public final class OpenPile extends AbstractPile {
@@ -95,10 +96,10 @@ public final class OpenPile extends AbstractPile {
     for (int i = 0; i < getNumberOfPiles(); i++) {
       res.append(getType().getSymbol());
       res.append(i + 1);
-      res.append(": ");
+      res.append(":");
       if (pile[i] != null) {
-        res.append(pile[i].toString());
         res.append(" ");
+        res.append(pile[i].toString());
       }
       res.append("\n");
     }

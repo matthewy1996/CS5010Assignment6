@@ -1,5 +1,6 @@
 package freecell.util.FreecellPile;
 
+import freecell.model.PileType;
 import freecell.util.FreecellCard.Card;
 
 public interface Pile {

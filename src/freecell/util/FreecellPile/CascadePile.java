@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import freecell.model.PileType;
 import freecell.util.FreecellCard.Card;
 
 public final class CascadePile extends AbstractPile {
@@ -122,14 +123,14 @@ public final class CascadePile extends AbstractPile {
     for (int i = 0; i < getNumberOfPiles(); i++) {
       res.append(getType().getSymbol());
       res.append(i + 1);
-      res.append(": ");
+      res.append(":");
       if (pileCounter[i] > 0) {
+        res.append(" ");
         for (int j = 0; j < pileCounter[i]; j++) {
           res.append(pile.get(i).get(j).toString());
           if (j != pileCounter[i] - 1) {
-            res.append(",");
+            res.append(", ");
           }
-          res.append(" ");
         }
       }
       if (i != getNumberOfPiles() - 1) {
