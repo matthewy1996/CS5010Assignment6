@@ -11,15 +11,14 @@ import freecell.util.FreecellPile.CascadePile;
 import freecell.util.FreecellPile.FoundationPile;
 import freecell.util.FreecellPile.OpenPile;
 import freecell.util.FreecellPile.Pile;
-import freecell.util.FreecellPile.PileType;
 
 public final class FreecellModel implements FreecellOperations {
 
   private static final Deck validFreecellDeck = new FreecellDeck();
   private static final int NUMBER_OF_FOUNDATION_PILES = 4;
 
-  private int numberOfOpenPile;
-  private int numberOfCascadePile;
+  private final int numberOfOpenPile;
+  private final int numberOfCascadePile;
   private Pile openPile;
   private Pile foundationPile;
   private Pile cascadePile;
@@ -30,7 +29,12 @@ public final class FreecellModel implements FreecellOperations {
     return new FreecellModelBuilder();
   }
 
-  private FreecellModel(int numberOfOpenPileIn, int numberOfCascadePileIn) {
+  private FreecellModel(int numberOfOpenPileIn, int numberOfCascadePileIn)
+          throws IllegalArgumentException {
+
+    if (numberOfOpenPileIn < 1 || numberOfCascadePileIn < 4) {
+      throw new IllegalArgumentException("Minimum 1 open pile, and 4 cascade piles required");
+    }
 
     numberOfOpenPile = numberOfOpenPileIn;
     numberOfCascadePile = numberOfCascadePileIn;
@@ -44,8 +48,8 @@ public final class FreecellModel implements FreecellOperations {
 
   public static class FreecellModelBuilder implements FreecellOperationsBuilder {
 
-    private int numberOfOpenPile;      // openPile: 1-4
-    private int numberOfCascadePile;   // cascadePile: 4-8
+    private int numberOfOpenPile;      // openPile: >= 1
+    private int numberOfCascadePile;   // cascadePile: >= 4
 
     private FreecellModelBuilder() {
 
@@ -195,6 +199,10 @@ public final class FreecellModel implements FreecellOperations {
   @Override
   public String getGameState() {
 
-    return foundationPile.toString() + openPile.toString() + cascadePile.toString();
+    if (state == GameState.WAITING_INITIALIZATION) {
+      return "";
+    } else {
+      return foundationPile.toString() + openPile.toString() + cascadePile.toString();
+    }
   }
 }

@@ -2,8 +2,6 @@ package freecell.model;
 
 import java.util.List;
 
-import freecell.util.FreecellPile.PileType;
-
 /**
  * This is the interface of the Freecell model. It is parameterized over the
  * card type, i.e. when you implement it, you can substitute K with your

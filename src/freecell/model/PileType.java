@@ -13,5 +13,17 @@ package freecell.model;
  * game is to fill up all the foundation piles
  */
 public enum PileType {
-  OPEN, CASCADE, FOUNDATION
+  OPEN("O"), CASCADE("C"), FOUNDATION("F");
+
+  private final String symbol;
+
+  PileType(String s) {
+
+    symbol = s;
+  }
+
+  public String getSymbol() {
+
+    return symbol;
+  }
 }

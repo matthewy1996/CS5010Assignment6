@@ -1,5 +1,7 @@
 package freecell.util.FreecellPile;
 
+import freecell.model.PileType;
+
 abstract class AbstractPile implements Pile {
 
   private final PileType type;

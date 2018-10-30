@@ -1,5 +1,6 @@
 package freecell.util.FreecellPile;
 
+import freecell.model.PileType;
 import freecell.util.FreecellCard.Card;
 import freecell.util.FreecellCard.CardValue;
 
@@ -116,14 +117,14 @@ public final class FoundationPile extends AbstractPile {
     for (int i = 0; i < getNumberOfPiles(); i++) {
       res.append(getType().getSymbol());
       res.append(i + 1);
-      res.append(": ");
+      res.append(":");
       if (pileCounter[i] > 0) {
+        res.append(" ");
         for (int j = 0; j < pileCounter[i]; j++) {
           res.append(pile[i][j].toString());
           if (j != pileCounter[i] - 1) {
-            res.append(",");
+            res.append(", ");
           }
-          res.append(" ");
         }
       }
       res.append("\n");

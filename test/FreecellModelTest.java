@@ -3,9 +3,7 @@ import org.junit.Test;
 
 import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
-import freecell.util.FreecellPile.PileType;
-
-import static org.junit.Assert.*;
+import freecell.model.PileType;
 
 public class FreecellModelTest {
 
