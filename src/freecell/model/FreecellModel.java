@@ -12,7 +12,7 @@ import freecell.util.FreecellPile.FoundationPile;
 import freecell.util.FreecellPile.OpenPile;
 import freecell.util.FreecellPile.Pile;
 
-public final class FreecellModel implements FreecellOperations {
+public final class FreecellModel implements FreecellOperations<Card> {
 
   private static final Deck validFreecellDeck = new FreecellDeck();
   private static final int NUMBER_OF_FOUNDATION_PILES = 4;
@@ -74,7 +74,12 @@ public final class FreecellModel implements FreecellOperations {
     @Override
     public <K> FreecellOperations<K> build() {
 
-      return new FreecellModel(numberOfOpenPile, numberOfCascadePile);
+      // This cast is correct because the FreecellModel we're creating is of the same type as the
+      // FreecellOperations<K> it implemented, which is FreecellOperations<Card>.
+      @SuppressWarnings("unchecked cast") FreecellOperations<K> build =
+              (FreecellOperations<K>) new FreecellModel(numberOfOpenPile, numberOfCascadePile);
+
+      return build;
     }
   }
 
@@ -100,7 +105,7 @@ public final class FreecellModel implements FreecellOperations {
   }
 
   @Override
-  public void startGame(List deck, boolean shuffle) throws IllegalArgumentException {
+  public void startGame(List<Card> deck, boolean shuffle) throws IllegalArgumentException {
 
     if (deck.size() != validFreecellDeck.getDeck().size()
             || !deck.containsAll(validFreecellDeck.getDeck())) {
